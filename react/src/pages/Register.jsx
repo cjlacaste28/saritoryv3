@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import pic from '../assets/logotextv2.png'
+import pic from '../assets/SARITORY_with_text_v2.png'
 import CssBaseline from '@mui/material/CssBaseline';
 import '../styles/loginregister.css'
 
