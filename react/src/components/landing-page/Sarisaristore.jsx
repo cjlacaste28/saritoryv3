@@ -16,7 +16,7 @@ function Sarisaristore (){
 					INVENTORY MADE EASY<br />
 				</h1>
 				<button type="button" className="btn learnmore fw-bold text-light" >
-					<a href="#about"  style={{ color:'white',backgroundColor: 'orange', borderRadius:'10%', padding: '10px 20px',textAlign: 'center', textDecoration: 'none', display:' inline-block', fontSize: '16px', margin:' 4px 2px', cursor: 'pointer' }}>LEARN MORE</a> 
+					<a href="#about"  style={{ color:'white',backgroundColor: '#FF914D', borderRadius:'10%', padding: '10px 20px',textAlign: 'center', textDecoration: 'none', display:' inline-block', fontSize: '16px', margin:' 4px 2px', cursor: 'pointer', }}>LEARN MORE</a> 
 				</button>
 			</div>
 		</div>
