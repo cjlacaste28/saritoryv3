@@ -1,7 +1,10 @@
 import {createBrowserRouter, Navigate} from 'react-router-dom';
 import Items from './components/dashboard/Items';
 import MembersLayout from './components/MembersLayout';
+import CategoryManagement from './pages/CategoryManagement';
 import Dashboard from './pages/Dashboard';
+import ExpiringItems from './pages/ExpiringItems';
+import ItemsManagement from './pages/ItemsManagement';
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
@@ -33,8 +36,16 @@ const router = createBrowserRouter([
 				element: <Dashboard />
 			},
 			{
-				path: '/app/products',
-				element: <Items />
+				path: '/app/category',
+				element: <CategoryManagement />
+			},
+			{
+				path: '/app/items',
+				element: <ItemsManagement />
+			},
+			{
+				path: '/app/expiring',
+				element: <ExpiringItems />
 			},
 		]
 	},
