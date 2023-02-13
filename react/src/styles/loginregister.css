@@ -383,6 +383,27 @@ form.sign-in-form {
   }
 }
 
+.alert {
+  padding: .5rem;
+  background-color: #ff4040;
+  color: white;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.alert p{
+  margin:0px;
+}
+
+@media(max-width:870px){
+  #portal #registerForm .input-field,
+  #portal #registerForm .input-field i.label-icon {
+    height: 35px;
+    line-height: 35px;
+  }
+  
+}
+
 @media (max-width: 570px) {
   #portal form {
     padding: 0 1.5rem;

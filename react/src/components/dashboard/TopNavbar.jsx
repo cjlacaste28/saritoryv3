@@ -1,11 +1,27 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Navigate, NavLink } from "react-router-dom";
 import { FaAlignLeft, FaAlignJustify } from "react-icons/fa";
 import logo from "../../assets/SARITORY2.png"
+// import { useStateContext } from "../../context/ContextProvider.jsx";
+// import axiosClient from "../../axios-clent";
+
 
 const TopNavbar = (props) => {
 
-  const onLogout = (event) => { event.preventDefault(); }
+	// const {user, token, setUser, setToken} = useStateContext();
+
+	// if(!token) {
+	// 	return <Navigate to='/portal/login' />
+	// }
+
+	// const onLogout = (event) => { 
+	// 	event.preventDefault();
+
+	// 	axiosClient.post('/logout').then(()=> {
+	// 		setUser({});
+	// 		setToken(null);
+	// 	});
+	//  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -54,7 +70,7 @@ const TopNavbar = (props) => {
                 </li>
                 <hr />
                 <li id="logout">
-                  <NavLink className="dropdown-item" to="#" onClick={onLogout}>
+                  <NavLink className="dropdown-item" to="#" onClick={props.onLogout}>
                     Logout
                   </NavLink>
                 </li>

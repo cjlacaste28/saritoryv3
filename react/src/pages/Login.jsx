@@ -6,13 +6,6 @@ import { useStateContext } from '../context/ContextProvider.jsx';
 import axiosClient from '../axios-clent';
 
 export default function Login() {
-    const [formsMode, setFormsMode] = useState('');
-    const signUpMode = () => { 
-        setFormsMode('sign-up-mode');
-     }
-     const signInMode = () => { 
-        setFormsMode('');
-     }
 
      const usernameRefLogin = useRef();
      const usernameRef = useRef();
@@ -21,8 +14,29 @@ export default function Login() {
      const passwordRefLogin = useRef();
      const passwordRef = useRef();
      const confirmpasswordRef = useRef();
+     const formRef = useRef(null);
+     const formRef2 = useRef(null);
      const [errors, setErrors] = useState(null)
      const {setUser, setToken} = useStateContext();
+     const [formsMode, setFormsMode] = useState('');
+     const [message, setMessage] = useState(null)
+     
+
+     const signUpMode = () => { 
+         setFormsMode('sign-up-mode');
+         setErrors(null);
+         clearForm();
+      }
+      const signInMode = () => { 
+         setFormsMode('');
+         setErrors(null);
+         clearForm();
+      }
+
+      function clearForm(){
+        formRef.current.reset();
+        formRef2.current.reset();
+      };
 
      const onSubmitRegister = (event) => { 
         event.preventDefault();
@@ -67,6 +81,27 @@ export default function Login() {
         console.log('====================================');
         console.log(payload);
         console.log('====================================');
+        setErrors(null);
+        axiosClient.post('/login', payload)
+        .then(({data}) => {
+            setToken(data.token);
+            setUser(data.user);
+            console.log('====================================');
+                console.log(`token here: ${data.token}`);
+                console.log(`username here: ${data.user}`);
+            console.log('====================================');
+        }).catch(err => {
+            const response = err.response;
+            if(response && response.status === 422){
+                console.log('====================================');
+                console.log(response.data.errors);
+                console.log('====================================');
+                setErrors(response.data.errors);
+                console.log('====================================');
+                console.log('This is from errors from login'+ JSON.stringify(errors));
+                console.log('====================================');
+            }
+        });
      }
 
 return (
@@ -80,12 +115,12 @@ return (
                   <div className="forms-container">
                       <div className="signin-signup">
                           {/* LOGIN FORM */}
-                          <form id="loginForm" className="sign-in-form" onSubmit={onSubmitLogin}>
+                          <form ref={formRef} id="loginForm" className="sign-in-form" onSubmit={onSubmitLogin}>
                             <h2 className="title">Sign in</h2>
                             {errors &&
                                 <div className="alert">
                                 {Object.keys(errors).map(key => (
-                                    <h2 key={key}>{errors[key][0]}</h2>
+                                    <p key={key}>{errors[key][0]}</p>
                                 ))}
                                 </div>
                             }
@@ -100,8 +135,15 @@ return (
                             <input type="submit" value="Login" className="btn solid"/>
                         </form>
 
-                        <form id="registerForm" action="#" className="sign-up-form" onSubmit={onSubmitRegister}>
+                        <form ref={formRef2} id="registerForm" action="#" className="sign-up-form" onSubmit={onSubmitRegister}>
                             <h2 className="title">Sign up</h2>
+                            {errors &&
+                                <div className="alert">
+                                {Object.keys(errors).map(key => (
+                                    <p key={key}>&#x2022;{errors[key][0]}</p>
+                                ))}
+                                </div>
+                            }
                             <div className="input-field">
                                 <i className="fas fa-store label-icon"></i>
                                 <input ref={storeRef} type="text" placeholder="Storename" />
