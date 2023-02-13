@@ -4,6 +4,9 @@ import { FaAlignLeft, FaAlignJustify } from "react-icons/fa";
 import logo from "../../assets/SARITORY2.png"
 
 const TopNavbar = (props) => {
+
+  const onLogout = (event) => { event.preventDefault(); }
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -32,9 +35,9 @@ const TopNavbar = (props) => {
                 data-bs-toggle="dropdown"
                 id="username"
               >
-                USERNAME
+                {props.username}
                 <span>
-                  <img src={logo} width="50" alt="" />
+                  <img src={logo} width="50" alt="" style={{marginLeft: '10px'}} />
                 </span>
               </a>
 
@@ -51,7 +54,7 @@ const TopNavbar = (props) => {
                 </li>
                 <hr />
                 <li id="logout">
-                  <NavLink className="dropdown-item" to="#">
+                  <NavLink className="dropdown-item" to="#" onClick={onLogout}>
                     Logout
                   </NavLink>
                 </li>

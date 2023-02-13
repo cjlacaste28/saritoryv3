@@ -7,7 +7,7 @@ function Sarisaristore (){
        <div>
 
         {/* Sarisari store */}
-       	<div className="bg-image sairsari-store-image" style={{ backgroundImage: 'url(' +Sarisari+ ')', height:'calc(100vh - 80px)'}}>
+       	<div className="bg-image sairsari-store-image" style={{ backgroundImage: 'url(' +Sarisari+ ')', height:'calc(100vh - 80px)', backgroundSize: 'cover'}}>
 
 		<div className="container d-flex align-items-center header-text__main" >
 			<div id="header-text__container"  style={{ position:'relative', top:'30vh'}}>

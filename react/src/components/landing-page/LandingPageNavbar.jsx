@@ -33,10 +33,10 @@ const LandingPageNavbar = () => {
 
             <ul className="navbar-nav" sx={{justifyContent:'space-between'}}>
                 <li className="nav-item">
-                <Link className="nav-link" to = '/login' style={{color:'white', fontWeight:'bold'}}>Login</Link>
+                <Link className="nav-link" to = '/portal/login' style={{color:'white', fontWeight:'bold'}}>Login</Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link" to = '/register' style={{color:'white', fontWeight:'bold', border:' 2px solid #FF914D', borderRadius:'10%'}}>Register</Link>
+                <Link className="nav-link" to = '/portal/register' style={{color:'white', fontWeight:'bold', border:' 2px solid #FF914D', borderRadius:'10%'}}>Register</Link>
                 </li>
             </ul>
       

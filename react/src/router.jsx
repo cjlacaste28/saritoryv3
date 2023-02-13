@@ -1,5 +1,6 @@
 import {createBrowserRouter, Navigate} from 'react-router-dom';
 import Items from './components/dashboard/Items';
+import GuestLayout from './components/GuestLayout';
 import MembersLayout from './components/MembersLayout';
 import CategoryManagement from './pages/CategoryManagement';
 import Dashboard from './pages/Dashboard';
@@ -16,12 +17,22 @@ const router = createBrowserRouter([
 		element: <LandingPage />
 	},
 	{
-		path: '/login',
-		element: <Login />
-	},
-	{
-		path: '/register',
-		element: <Register />
+		path: '/portal',
+		element: <GuestLayout />,
+		children:[
+			{
+				path: '/portal',
+				element: <Login />
+			},
+			{
+				path: '/portal/login',
+				element: <Login />
+			},
+			{
+				path: '/portal/register',
+				element: <Register />
+			},
+		]
 	},
 	{
 		path: '/app',

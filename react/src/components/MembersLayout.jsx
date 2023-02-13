@@ -1,11 +1,18 @@
 import React, { useState } from 'react'
-import {Link, Outlet} from 'react-router-dom';
+import {Link, Navigate, Outlet} from 'react-router-dom';
 import logo from '../assets/SARITORY_with_text_v2.png';
 import TopNavBar from "./dashboard/TopNavbar"
 import '../styles/dashboard.css'
+import { useStateContext } from '../context/ContextProvider.jsx';
 
 export default function MembersLayout() {
+	const {user, token} = useStateContext();
 	const [sidebarStatus, setSidebarStatus] = useState('');
+
+	if(!token) {
+		return <Navigate to='/portal/login' />
+	}
+
 	function toggleSidebarStatus(){
 		sidebarStatus===''? setSidebarStatus('active') : setSidebarStatus('');
 	  };
@@ -19,7 +26,9 @@ export default function MembersLayout() {
 						</Link>
 					</div>
 					<ul className="list-unstyled components">
-						<span id="storeName">Name of Store</span>
+						<span id="storeName">
+							{user.store_name}
+						</span>
 						<li id="sideMenuDashboard">
 							<Link to="/app/dashboard">Dashboard</Link>
 						</li>
@@ -74,7 +83,7 @@ export default function MembersLayout() {
 					</ul>
 				</nav>
 				<div id="content">
-					<TopNavBar toggleSidebarStatus={toggleSidebarStatus}/>
+					<TopNavBar toggleSidebarStatus={toggleSidebarStatus} username={user.username} />
 					<Outlet />
 				</div>
 			</div>

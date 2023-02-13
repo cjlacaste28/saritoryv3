@@ -5,11 +5,14 @@ import { ProSidebarProvider} from 'react-pro-sidebar';
 import App from './App'
 import './index.css'
 import router from './router.jsx'
+import { ContextProvider } from './context/ContextProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ProSidebarProvider>
-      <RouterProvider router={router} />
+      <ContextProvider>
+        <RouterProvider router={router} />
+      </ContextProvider>
     </ProSidebarProvider>
   </React.StrictMode>,
 )
