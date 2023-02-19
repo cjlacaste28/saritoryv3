@@ -2,6 +2,10 @@ import React from 'react'
 
 export default function Dashboard() {
   return (
-	<div>Dashboards</div>
+	<div>
+    {/* Dashboards */}
+    <p class="ms-3 breadcrumbs">DASHBOARD</p>
+    
+    </div>
   )
 }
